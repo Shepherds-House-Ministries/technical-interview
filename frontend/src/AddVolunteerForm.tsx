@@ -1,9 +1,12 @@
 import { useState, type FormEvent } from 'react';
+import moment from 'moment';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Alert, Button, Stack, TextField } from '@mui/material';
 import { createVolunteer, type NewVolunteer } from './api';
 
-const emptyForm: NewVolunteer = { name: '', email: '', shiftDate: '' };
+// The date starts as today. An empty date input looks filled in on some
+// browsers (Safari shows today's date) but submits as blank.
+const emptyForm = (): NewVolunteer => ({ name: '', email: '', shiftDate: moment().format('YYYY-MM-DD') });
 
 export function AddVolunteerForm() {
   const queryClient = useQueryClient();
@@ -12,7 +15,7 @@ export function AddVolunteerForm() {
   const mutation = useMutation({
     mutationFn: createVolunteer,
     onSuccess: async () => {
-      setForm(emptyForm);
+      setForm(emptyForm());
       await queryClient.invalidateQueries({ queryKey: ['volunteers'] });
     },
   });
