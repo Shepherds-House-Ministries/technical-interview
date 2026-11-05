@@ -1,0 +1,16 @@
+{
+  "name": "volunteers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "start": "concurrently -n api,web -c blue,magenta \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "migrate": "cd backend && npm run migrate",
+    "seed": "cd backend && npm run seed",
+    "test": "cd backend && npm test && cd ../frontend && npm test",
+    "typecheck": "cd backend && npm run typecheck && cd ../frontend && npm run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}
