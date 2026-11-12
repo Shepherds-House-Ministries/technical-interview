@@ -8,7 +8,7 @@ A small full-stack app: a list of volunteers and their shift dates, with a form 
 
 ## Prerequisites
 
-- [Node.js 24](https://nodejs.org/) (`nvm use` picks it up from `.nvmrc`)
+- [Node.js](https://nodejs.org/) 22.12 or newer. Tested on 22, 24 and 26; `nvm use` picks 24 from `.nvmrc`.
 - [Docker](https://www.docker.com/) with Docker Compose
 
 On Windows, run everything from WSL: the npm scripts use Unix-style environment variables.

@@ -1,7 +1,9 @@
-const path = require('path');
+// sequelize-cli options. This is an ES module: backend/package.json sets "type": "module",
+// and Node 26 loads this extensionless file as one. Node 22 to 25 detect the import and do the same.
+import path from 'node:path';
 
-module.exports = {
-  config: path.resolve('src/database/config.cjs'),
-  'migrations-path': path.resolve('src/database/migrations'),
-  'seeders-path': path.resolve('src/database/seeders'),
-};
+const here = import.meta.dirname;
+
+export const config = path.resolve(here, 'src/database/config.cjs');
+export const migrationsPath = path.resolve(here, 'src/database/migrations');
+export const seedersPath = path.resolve(here, 'src/database/seeders');
